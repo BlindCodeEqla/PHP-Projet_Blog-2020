@@ -1,0 +1,21 @@
+<?php
+include "config.php";
+
+$reponse=$bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation,"%d/%m/%Y")  AS date_creation_fr FROM billet ORDER BY ID DESC LIMIT 0,5');
+
+
+while($donnees=$reponse->fetch())
+{
+    ?>
+    <p>
+        <strong>Titre</strong>: <?php echo $donnees['titre'] ; ?>
+        <strong>Date</strong>: <?php echo $donnees['date_creation_fr'] ; ?>
+        <br>
+        <em><a href="commentaires.php?id=<?php echo $donnees['id']; ?>">Lire la suite
+                ...</a></em>
+    </p>
+    <?php
+}
+$reponse->closeCursor();
+?>
+
