@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 
-$reponse=$bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation,"%d/%m/%Y")  AS date_creation_fr FROM billet ORDER BY ID DESC LIMIT 0,5');
+$reponse=$bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation,"%d/%m/%Y")  AS date_creation_fr FROM billet ORDER BY ID DESC LIMIT 0,120');
 
 
 while($donnees=$reponse->fetch())
