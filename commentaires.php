@@ -29,3 +29,4 @@ while($donnees=$reponse->fetch())
 }
 $reponse->closeCursor();
 ?>
+<a type="button" href="index.php"> Retourner à la liste des articles </a>

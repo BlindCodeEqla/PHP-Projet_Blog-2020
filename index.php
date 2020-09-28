@@ -1,3 +1,6 @@
+
+<a href="insert.php"> Ajouter un article </a>
+
 <?php
 include "config.php";
 

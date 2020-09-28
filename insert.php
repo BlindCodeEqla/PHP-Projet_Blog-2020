@@ -20,8 +20,8 @@
 <?php
 include "config.php";
 
-//if(isset($_POST['ajout']))
-//{
+if(isset($_POST['ajout']))
+{
 if ((empty($_POST["titre"])) || (empty($_POST["contenu"])) )
 {
     echo "<div class='alert alert-danger'><p class='lead'>Vous devez remplir les champs vides</p></div><br><br> ";
@@ -44,8 +44,10 @@ catch (Exception $error)
     echo $error->getMessage();  //génère un message d'erreur
 
 }
-//}
+}
 }
 //header('Location:commentaires.php');
 
 ?>
+
+<a type="button" href="index.php"> Retourner à la liste des articles </a>
