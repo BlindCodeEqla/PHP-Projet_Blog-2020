@@ -11,8 +11,8 @@
 
 <form action="inscription.php" method="post">
 
-    <label for="titre">Pseudo</label>:
-    <input type="text" name="pseudo" id="pseudo" /><br/>
+    <label for="pseudo">Pseudo</label>:
+    <input type="text" name="pseudo" id="pseudo"/><br/>
     <label for="mail">Mail</label>:
     <input type="email" name="mail" id="mail" /><br/>
     <label for="mdp">Mot de passe</label>:
@@ -34,8 +34,48 @@ include "config.php";
 
 if (isset($_POST['inscription'])){
 
+
     if (!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])){
-        echo '<br>ok';
+//        echo '<br>ok';
+
+        $reqmail = $bdd->prepare("SELECT * FROM membre WHERE mail = ?");
+        $reqmail->execute(array($_POST['mail']));
+        $mailexist = $reqmail->rowCount(); // va compter le nombre de lignes qui existent pour la requête demandée
+
+        if ($mailexist == 0){
+
+        if ($_POST['mdp'] == $_POST['mdp2']){
+
+            try
+
+            {
+                $reponse = $bdd->prepare('INSERT INTO membre(pseudo,mail, mot_passe) VALUES (?, ?, ?)');
+                $reponse->execute(array(
+                    $_POST['pseudo'],
+                    $_POST['mail'],
+                    $_POST['mdp']
+                ));
+                echo "<p>Vous êtes bien inscrit</p><br><br>";
+                header('Location:index.php');
+
+            }
+            catch (Exception $error)
+            {
+                echo $error->getMessage();  //génère un message d'erreur rencontré par PDO
+
+            }
+
+        }
+        else{
+            echo "<br><br>Vos mots de passe ne correspondent pas";
+        }
+        } else{
+
+        echo "<br><br>L'adresse mail est déjà utilisée";
+    }
+    }
+    else{
+        echo "<br><br>Tous les champs doivent être remplis";
     }
 
 }
