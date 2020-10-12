@@ -1,6 +1,6 @@
 
 <a href="inscription.php"> S'inscrire </a>
-<a href="inscription.php"> Se connecter </a>
+<a href="connexion.php"> Se connecter </a>
 
 <a href="insert.php"> Ajouter un article </a>
 

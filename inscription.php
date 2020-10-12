@@ -12,13 +12,13 @@
 <form action="inscription.php" method="post">
 
     <label for="pseudo">Pseudo</label>:
-    <input type="text" name="pseudo" id="pseudo"/><br/>
+    <input type="text" name="pseudo" id="pseudo" value="<?php if (!empty($_POST['pseudo'])){ echo $_POST['pseudo'];} ?>"/><br/>
     <label for="mail">Mail</label>:
-    <input type="email" name="mail" id="mail" /><br/>
+    <input type="email" name="mail" id="mail" value="<?php if (!empty($_POST['mail'])){ echo $_POST['mail'];} ?>" /><br/>
     <label for="mdp">Mot de passe</label>:
-    <input type="password" name="mdp" id="mdp" /><br/>
+    <input type="password" name="mdp" id="mdp" value="<?php if (!empty($_POST['mdp'])){ echo $_POST['mdp'];} ?>" /><br/>
     <label for="mdp2">Confirmez le Mot de passe</label>:
-    <input type="password" name="mdp2" id="mdp2" /><br/>
+    <input type="password" name="mdp2" id="mdp2" value="<?php if (!empty($_POST['mdp2'])){ echo $_POST['mdp2'];} ?>" /><br/>
 
 
     <input type="submit" class="btn btn-success" name="inscription" value="S'inscrire"/>
