@@ -1,8 +1,17 @@
-
+<?php
+session_start();
+?>
 <a href="inscription.php"> S'inscrire </a>
 <a href="connexion.php"> Se connecter </a>
-
+<?php
+$admin = "";
+if ($_SESSION['admin'] == 1){
+    ?>
 <a href="insert.php"> Ajouter un article </a>
+<?php
+}
+?>
+
 
 <?php
 include "config.php";

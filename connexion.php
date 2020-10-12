@@ -49,6 +49,7 @@ if (isset($_POST['connexion'])){
             $_SESSION['id'] = $userinfo['id'];
             $_SESSION['pseudo'] = $userinfo['pseudo'];
             $_SESSION['mail'] = $userinfo['mail'];
+            $_SESSION['admin'] = $userinfo['admin'];
             header("Location: profil.php?id=".$_SESSION['id']); // pour rediriger vers la page profil de la personne
 
 
