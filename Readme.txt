@@ -24,9 +24,6 @@ ALTER TABLE commentaire ADD FOREIGN KEY (fk_membre) references membre(id);
 
 
 
-
-
-
 JOURNAL:
 
 - ajouter session_start à la page commentaire.php
