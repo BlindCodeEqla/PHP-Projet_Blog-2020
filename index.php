@@ -1,15 +1,33 @@
 <?php
 session_start();
 ?>
-<a href="inscription.php"> S'inscrire </a>
-<a href="connexion.php"> Se connecter </a>
+
 <?php
-$admin = "";
-if ($_SESSION['admin'] == 1){
+if(isset($_SESSION['id'])) { // vérifie si un utilisateur est bien connecté, si une session existe bien.
+
     ?>
-<a href="insert.php"> Ajouter un article </a>
+
+    <?php echo 'Bonjour ' . $_SESSION['pseudo']?>&nbsp;
+
+    <a href="profil.php">Mon profil</a>&nbsp;
+    <a href="deconnexion.php"> Se déconnecter </a>
+
+    <?php
+
+    if ($_SESSION['admin'] == 1) {
+        ?>
+        <a href="insert.php"> Ajouter un article </a>
+        <?php
+    }
+} else
+{
+    ?>
+    <a href="inscription.php"> S'inscrire </a>
+    <a href="connexion.php"> Se connecter </a>
+
 <?php
 }
+
 ?>
 
 

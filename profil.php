@@ -5,7 +5,7 @@ include 'config.php';
 
 // on va vérifier si la variable get id existe bien (si elle n'existe pas, ça n'affiche rien)
 
-if (isset($_GET['id'])){
+if (isset($_SESSION['id'])){
 
 ?>
 
@@ -27,4 +27,4 @@ if ($_SESSION['admin'] == 1){
 <?php
 }
 ?>
-<a type="button" href="index.php"> Retourner à la liste des articles </a>
+<a href="index.php"> Retourner à la liste des articles </a>

@@ -26,7 +26,7 @@
 
 
 <?php
-session_start(); // commencer une session en début de code php (obligatoire pour récupérer les varaibles de session sur chaque page)
+session_start(); // commencer une session en début de code php (obligatoire pour récupérer les variables de session sur chaque page)
 
 include "config.php";
 
