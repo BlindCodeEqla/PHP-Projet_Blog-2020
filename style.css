@@ -1,0 +1,100 @@
+header{
+    display: grid;
+    grid-template-columns: 150px 1fr  70px ;
+    background-color: teal;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    z-index: 2000;
+    
+}
+
+footer{
+    background-color: teal;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    bottom:0;
+
+    
+
+}
+#menuToggle{
+    width: 40px;
+    height:40px;
+    z-index: 1000;
+    border:none;
+    background-color: teal;
+   
+ 
+}
+#title {
+    margin:0;
+    font-weight: normal;
+    font-size:1.5rem;
+    padding-bottom:0;
+    padding-left: 0;
+    position: relative;
+    top: 10px;
+    color:white;
+
+
+}
+#logoImg{
+    height: 80px;
+    width: 80px;
+
+}
+#NavBar{
+    position:fixed;
+    z-index:2000;
+    display:none;
+}
+
+
+
+#NavBar ul{
+    list-style-type: none;
+    position: relative;
+    top:40px;
+    margin: 0;
+    padding: 0;
+    display:flex;
+    flex-direction: column;
+} 
+#NavBar a {
+    /* display: block; for responsiveness */
+    color: teal;
+    text-decoration: none;
+}
+.accessibility{
+    position: absolute;
+    left: -15000px;
+}
+
+@media screen and (min-width:700px) {
+    #menuToggle{
+        display: none;
+    }
+    header{
+        grid-template-columns: 150px 1fr 550px ;
+        
+    }
+    #NavBar{
+        position:static;
+        background-color: transparent;
+        display:block;
+        
+    }
+
+    #NavBar ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+    }
+    #NavBar a {
+        padding:  10px 10px 10px 10px;
+
+    }
+}
