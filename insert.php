@@ -14,6 +14,7 @@
         <textarea class="form-control" rows="10" cols="100" name="contenu" id="contenu" ></textarea><br><br>
 
         <input type="submit" class="btn btn-success" name="ajout" value="Ajouter"/>
+
         </br>
 </form>
 

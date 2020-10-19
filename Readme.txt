@@ -25,18 +25,14 @@ ALTER TABLE commentaire ADD FOREIGN KEY (fk_membre) references membre(id);
 
 
 JOURNAL:
+- page insert_comment.php
 
-- ajouter session_start à la page commentaire.php
-- ajouter à la page commentaire.php les conditions si admin = 1 ou 2
-- modification base de données (voir ci-dessus)
-- modification requête + récupération du nom d'auteur dans la page commentaires.php
 
 
 TO DO:
 
-- afficher le nom du pseudo sur une entête de page
-- régler le problème du profil (quand on clique sur le lien à partir de la page index.php)
-- page insert_comment.php
+- Ajouter une photo à un article et le stocker dans la base de données
+- Afficher la photo d'un article
 - conditions d'affichage des liens : include un header?
 - si admin alors pouvoir gérer autorisations des utilisateurs
 - modération des commentaires par admin (boolean: publié ou non)

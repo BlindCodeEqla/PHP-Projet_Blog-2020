@@ -43,10 +43,10 @@ if ($_SESSION['admin'] == 1 OR $_SESSION['admin'] ==2){
     <br><br>
     <form action="insert_comment.php" method="post">
 
-        <label for="contenu">Commentaire de <?php echo $_SESSION['pseudo']?></label>: <br/>
-        <textarea class="form-control" rows="10" cols="100" name="comment" id="comment" ></textarea><br><br>
+        <label for="contenu">Commentaire de <?php echo $_SESSION['pseudo']; ?></label>: <br/>
+        <textarea rows="10" cols="100" name="comment" id="comment" ></textarea><br><br>
 
-        <input type="submit" class="btn btn-success" name="ajout" value="Ajouter"/>
+        <input type="submit" name="ajout" value="Ajouter"/>
         </br>
     </form>
 
