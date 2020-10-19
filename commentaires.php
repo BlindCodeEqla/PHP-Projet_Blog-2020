@@ -41,7 +41,7 @@ if ($_SESSION['admin'] == 1 OR $_SESSION['admin'] ==2){
 
     ?>
     <br><br>
-    <form action="insert_comment.php" method="post">
+    <form action="insert_comment.php?id=<?php echo $_GET['id']; ?>" method="post">
 
         <label for="contenu">Commentaire de <?php echo $_SESSION['pseudo']; ?></label>: <br/>
         <textarea rows="10" cols="100" name="comment" id="comment" ></textarea><br><br>

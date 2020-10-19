@@ -25,8 +25,6 @@ ALTER TABLE commentaire ADD FOREIGN KEY (fk_membre) references membre(id);
 
 
 JOURNAL:
-- page insert_comment.php
-
 
 
 TO DO:
