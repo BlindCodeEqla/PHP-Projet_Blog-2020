@@ -10,19 +10,19 @@ $donnees = $reponse->fetch();
 <p>
     <strong>Titre</strong>: <?php echo $donnees['titre'] ; ?><br>
 
-<!--    MODIFICATION-->
+
     <br><br>
     <?php
     if(!empty($donnees['lien_image']))
     {
         ?>
-    <img src="images/<?php echo $donnees['lien_image']?>" width="150" />
+    <img alt = "test" src="images/<?php echo $donnees['lien_image']?>" width="150" />
         <br><br>
 
     <?php
     }
     ?>
-<!--    FIN MODIFICATION-->
+
 
 
     <strong>Contenu</strong>: <?php echo $donnees['contenu'] ; ?><br>
@@ -45,9 +45,27 @@ while($donnees=$reponse->fetch())
         <strong> <?php echo $donnees['pseudo'] ; ?></strong><em> dit </em>:
         <?php echo $donnees['commentaire'] ; ?>
         <em>le</em>: <?php echo $donnees['date_fr'] ; ?>
+
+<!--        AJOUT-->
+
+        <?php
+        if (isset($_SESSION['admin'])){
+        if ($_SESSION['admin'] == 1){
+            ?>
+            <a href="delete_comment.php?id=<?php echo $_GET['id']; ?>&id_commentaire=<?php echo $donnees['ref']; ?>">Suppprimer</a>
+        <?php
+            }
+            }
+
+
+        ?>
+
+        <!--      FIN  AJOUT-->
+
+
     </p>
 
-    <!-- AJOUT -->
+
 
     <?php
     $rep=$bdd->prepare('SELECT *, commentaire.id AS ref, DATE_FORMAT(date_commentaire,"%d/%m/%Y")  AS date_fr FROM commentaire INNER JOIN membre ON membre.id = commentaire.fk_membre WHERE id_billet= ? AND fk_commentaire IS NOT NULL AND fk_commentaire = ? ORDER BY date_commentaire');
@@ -62,29 +80,50 @@ while($donnees=$reponse->fetch())
             <strong><?php echo $donnees_enfants['pseudo']; ?></strong>
             <em>répond</em>: <?php echo $donnees_enfants['commentaire']; ?>
             <em>le</em> <?php echo $donnees_enfants['date_fr']; ?>
+
+            <!--        AJOUT-->
+
+            <?php
+        if (isset($_SESSION['admin'])){
+            if ($_SESSION['admin'] == 1){
+                ?>
+                <a href="delete_comment_enfant.php?id=<?php echo $_GET['id']; ?>&id_commentaire=<?php echo $donnees_enfants['ref']; ?>">Suppprimer</a>
+                <?php
+            }
+            }
+
+
+            ?>
+
+            <!--      FIN  AJOUT-->
+
         </p>
         <?php
     }
     $rep->closeCursor();
+
+
+    if(isset($_SESSION['id'])) { // vérifie si un utilisateur est bien connecté, si une session existe bien.
+    if ($_SESSION['admin'] == 1 OR $_SESSION['admin'] ==2){
         ?>
 
-<!--    <! -- a adapter-->-->
+
     <form style = margin-left:40px; action="repondre_comment.php?id=<?php echo $_GET['id']; ?>&fk_commentaire=<?php echo $donnees['ref']; ?>" method="post">
 
         <label for="contenu">Répondez à <?php echo $donnees['pseudo']; ?></label>: <br/>
         <textarea rows="3" cols="50" name="comment" id="comment" ></textarea><br><br>
 
-        <input type="submit" name="ajout" value="Ajouter"/>
+        <input type="submit" name="ajout" value="Répondre"/>
         </br>
     </form>
 
-    <!-- FIN AJOUT -->
+
     <?php
+    }
+    }
 }
 $reponse->closeCursor();
-?>
 
-<?php
 
 if(isset($_SESSION['id'])) { // vérifie si un utilisateur est bien connecté, si une session existe bien.
 if ($_SESSION['admin'] == 1 OR $_SESSION['admin'] ==2){

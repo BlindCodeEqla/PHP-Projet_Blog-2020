@@ -13,11 +13,10 @@
         <label for="contenu">Contenu</label>: <br/>
         <textarea class="form-control" rows="10" cols="100" name="contenu" id="contenu" ></textarea><br><br>
 
-<!--    MODIFICATION-->
     <label> Image</label>
     <input type="file" name="image" value="Télécharger"/>
 
-<!--        FIN MODIFICATION-->
+
         <input type="submit" class="btn btn-success" name="ajout" value="Ajouter"/>
 
         </br>
@@ -45,6 +44,9 @@ if(isset($_POST['ajout']))
             // strrchr: va nous permettre de prendre l'extension du fichier (le '.' est le caractère que la chaine ne va pas prendre en compte et éliminer (le séparateur))
 
             $extensionupload = strtolower(substr(strrchr($_FILES['image']['name'], '.'),1));
+
+            // ON EST ARRIVE ICI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //_______________________________________________________________________________
 
             // in_array: vérifie si c'est dans le tableau
             // si la variable  extensionupload intègre bien l'une des valeur initailisée dans la variable extensionvalide
@@ -88,8 +90,9 @@ if(isset($_POST['ajout']))
                         }
                     }
 
-
                 }
+
+
                 else {
                     echo "<div class='alert alert-danger'><p class='lead'>Erreur durant l'importation de votre image. Veuillez recommencer.</p></div><br><br> ";
                 }
@@ -103,34 +106,9 @@ if(isset($_POST['ajout']))
             echo "<div class='alert alert-danger'><p class='lead'>Votre image ne doit pas dépasser 2Mo</p></div><br><br> "; //2 mégas octets
         }
     }
+    }
 
-    // FIN MODIFICATION
 
-//if ((empty($_POST["titre"])) || (empty($_POST["contenu"])) )
-//{
-//    echo "<div class='alert alert-danger'><p class='lead'>Vous devez remplir les champs vides</p></div><br><br> ";
-//}
-//else
-//{
-//try
-//
-//{
-//    $reponse = $bdd->prepare('INSERT INTO billet(titre,contenu, date_creation) VALUES (?, ?, NOW())');
-//    $reponse->execute(array(
-//        $_POST['titre'],
-//        $_POST['contenu']
-//    ));
-//    echo "<div class='alert alert-success'><p class='lead'>Votre article a bien été ajouté</p></div><br><br>";
-//
-//}
-//catch (Exception $error)
-//{
-//    echo $error->getMessage();  //génère un message d'erreur
-//
-//}
-//}
-}
-//header('Location:commentaires.php');
 
 ?>
 
