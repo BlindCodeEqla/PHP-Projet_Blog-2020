@@ -16,7 +16,7 @@ $donnees = $reponse->fetch();
     if(!empty($donnees['lien_image']))
     {
         ?>
-    <img alt = "test" src="images/<?php echo $donnees['lien_image']?>" width="150" />
+    <img alt = "<?php echo $donnees['titre'] ; ?>" src="images/<?php echo $donnees['lien_image']?>" width="150" />
         <br><br>
 
     <?php
@@ -42,17 +42,30 @@ while($donnees=$reponse->fetch())
     ?>
     <p>
 
-        <strong> <?php echo $donnees['pseudo'] ; ?></strong><em> dit </em>:
+        <?php
+        if ($donnees['actif'] == 1) {
+            ?>
+
+            <strong> <?php echo $donnees['pseudo']; ?></strong><em> dit </em>:
+
+
+            <?php
+        } elseif ($donnees['actif'] == 2){
+            ?>
+        <strong>Anonyme</strong><em> dit </em>:
+        <?php
+        }
+        ?>
+
         <?php echo $donnees['commentaire'] ; ?>
         <em>le</em>: <?php echo $donnees['date_fr'] ; ?>
 
-<!--        AJOUT-->
 
         <?php
         if (isset($_SESSION['admin'])){
-        if ($_SESSION['admin'] == 1){
+        if ($_SESSION['admin'] == 1 OR $_SESSION['id'] == $donnees['fk_membre']){
             ?>
-            <a href="delete_comment.php?id=<?php echo $_GET['id']; ?>&id_commentaire=<?php echo $donnees['ref']; ?>">Suppprimer</a>
+            <a href="delete_comment.php?id=<?php echo $_GET['id']; ?>&id_commentaire=<?php echo $donnees['ref']; ?>&fk_membre=<?php echo $donnees['fk_membre']; ?>">Supprimer</a>
         <?php
             }
             }
@@ -60,7 +73,7 @@ while($donnees=$reponse->fetch())
 
         ?>
 
-        <!--      FIN  AJOUT-->
+
 
 
     </p>
@@ -77,17 +90,33 @@ while($donnees=$reponse->fetch())
         ?>
         <p style = margin-left:40px;>
 
+
+        <?php
+        if ($donnees_enfants['actif'] == 1) {
+            ?>
+
+
             <strong><?php echo $donnees_enfants['pseudo']; ?></strong>
+
+
+            <?php
+        } elseif ($donnees_enfants['actif'] == 2){
+            ?>
+            <strong>Anonyme</strong>
+            <?php
+        }
+        ?>
+
             <em>répond</em>: <?php echo $donnees_enfants['commentaire']; ?>
             <em>le</em> <?php echo $donnees_enfants['date_fr']; ?>
 
-            <!--        AJOUT-->
+
 
             <?php
         if (isset($_SESSION['admin'])){
-            if ($_SESSION['admin'] == 1){
+            if ($_SESSION['admin'] == 1 OR $_SESSION['id'] == $donnees_enfants['fk_membre']){
                 ?>
-                <a href="delete_comment_enfant.php?id=<?php echo $_GET['id']; ?>&id_commentaire=<?php echo $donnees_enfants['ref']; ?>">Suppprimer</a>
+                <a href="delete_comment_enfant.php?id=<?php echo $_GET['id']; ?>&id_commentaire=<?php echo $donnees_enfants['ref']; ?>&fk_membre=<?php echo $donnees_enfants['fk_membre']; ?>">Supprimer</a>
                 <?php
             }
             }
@@ -95,7 +124,6 @@ while($donnees=$reponse->fetch())
 
             ?>
 
-            <!--      FIN  AJOUT-->
 
         </p>
         <?php

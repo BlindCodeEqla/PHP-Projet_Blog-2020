@@ -25,13 +25,12 @@ if ($_SESSION['admin'] == 1){
 
 <p>Vous avez un compte <?php echo $admin ?></p>
 
-
+    <!-- ajout -->
 <?php
 
     $reponse=$bdd->prepare('SELECT * FROM membre WHERE id = ?');
     $reponse->execute(array($_SESSION['id']));
     $donnees = $reponse->fetch();
-
 
     if ($donnees['actif'] == 1){
 ?>
@@ -51,6 +50,8 @@ if ($_SESSION['admin'] == 1){
 
     ?>
 
+
+    <!-- fin ajout -->
 
 <?php
 }

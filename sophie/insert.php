@@ -80,8 +80,7 @@ if(isset($_POST['ajout']))
                                 $_POST['contenu'],
                                 $_POST['titre'].".".$extensionupload
                             ));
-//                            echo "<div class='alert alert-success'><p class='lead'>Votre article a bien été ajouté</p></div><br><br>";
-                            header("Location: insert.php");
+                            echo "<div class='alert alert-success'><p class='lead'>Votre article a bien été ajouté</p></div><br><br>";
 
                         }
                         catch (Exception $error)
@@ -106,8 +105,7 @@ if(isset($_POST['ajout']))
         } else{
             echo "<div class='alert alert-danger'><p class='lead'>Votre image ne doit pas dépasser 2Mo</p></div><br><br> "; //2 mégas octets
         }
-    } else
-        echo " vous devez télécharger une  image";
+    }
     }
 
 
