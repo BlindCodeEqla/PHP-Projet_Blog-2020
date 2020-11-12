@@ -16,7 +16,10 @@
     <label> Image</label>
     <input type="file" name="image" value="Télécharger"/>
 
+    <label for="legende">Légende de l'image</label>:
+    <input type="text" name="legende" id="legende" /><br/>
 
+<br>
         <input type="submit" class="btn btn-success" name="ajout" value="Ajouter"/>
 
         </br>
@@ -64,7 +67,7 @@ if(isset($_POST['ajout']))
 
 
                     // COPIER CODE EN BAS
-                    if ((empty($_POST["titre"])) || (empty($_POST["contenu"])))
+                    if ((empty($_POST["titre"])) || (empty($_POST["contenu"])) || (empty($_POST['legende'])))
                     {
                         echo "<div class='alert alert-danger'><p class='lead'>Vous devez remplir les champs vides</p></div><br><br> ";
                     }
@@ -74,11 +77,12 @@ if(isset($_POST['ajout']))
 
                         {
                             // à adapter
-                            $reponse = $bdd->prepare('INSERT INTO billet(titre,contenu, lien_image, date_creation) VALUES (?, ?, ?, NOW())');
+                            $reponse = $bdd->prepare('INSERT INTO billet(titre,contenu, lien_image, legende, date_creation) VALUES (?, ?, ?, ?, NOW())');
                             $reponse->execute(array(
                                 $_POST['titre'],
                                 $_POST['contenu'],
-                                $_POST['titre'].".".$extensionupload
+                                $_POST['titre'].".".$extensionupload,
+                                $_POST['legende']
                             ));
 //                            echo "<div class='alert alert-success'><p class='lead'>Votre article a bien été ajouté</p></div><br><br>";
                             header("Location: insert.php");

@@ -36,12 +36,14 @@ UPDATE membre
 SET actif = 1;
 
 
+6. ajouter le champ legende
+-------------------------------------
+ALTER TABLE billet ADD legende VARCHAR(100) NOT NULL DEFAULT 'image';
+
 
 JOURNAL:
 
-2. supprimer ou désactiver mon profil (activer et désactiver)
 
-- ajouter la condition dans le fichier commentaires.php que si le profil est désactivé, afficher comme pseudo 'anonyme'
 
 
 TO DO:

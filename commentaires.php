@@ -16,7 +16,7 @@ $donnees = $reponse->fetch();
     if(!empty($donnees['lien_image']))
     {
         ?>
-    <img alt = "<?php echo $donnees['titre'] ; ?>" src="images/<?php echo $donnees['lien_image']?>" width="150" />
+    <img alt = "<?php echo $donnees['legende'] ; ?>" src="images/<?php echo $donnees['lien_image']?>" width="150" />
         <br><br>
 
     <?php
