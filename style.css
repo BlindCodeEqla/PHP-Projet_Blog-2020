@@ -14,17 +14,18 @@ footer{
     height: 40px;
     width: 100%;
     position: fixed;
-    bottom:0;
-
-    
+    bottom:0; 
 
 }
+
+
 #menuToggle{
     width: 40px;
     height:40px;
     z-index: 1000;
     border:none;
     background-color: teal;
+    
    
  
 }
@@ -52,6 +53,13 @@ footer{
 }
 
 
+.nav_ouvrir{
+   display: block !important;
+}
+
+
+
+
 
 #NavBar ul{
     list-style-type: none;
@@ -61,18 +69,55 @@ footer{
     padding: 0;
     display:flex;
     flex-direction: column;
+    padding-left: 300px;
 } 
 #NavBar a {
-    /* display: block; for responsiveness */
+    display: block; 
     color: teal;
     text-decoration: none;
+    
 }
+
+#NavBar ul li ul {
+    display:none;
+    }
+
+
 .accessibility{
     position: absolute;
     left: -15000px;
 }
 
-@media screen and (min-width:700px) {
+
+#lien_article{
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    color: teal;
+}
+
+a:visited {
+  color:blueviolet;
+}
+
+
+a:hover { 
+  background:pink;
+}
+
+a:active {
+  background: grey;
+}
+
+.message_erreur{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    background-color: pink;
+    color: black;
+    display: block;
+}
+
+@media screen and (min-width:760px) {
     #menuToggle{
         display: none;
     }
@@ -91,10 +136,11 @@ footer{
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-
     }
+
+
     #NavBar a {
-        padding:  10px 10px 10px 10px;
-
-    }
+       padding: 0px 10px;
+    } 
 }
+
