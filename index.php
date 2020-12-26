@@ -1,36 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mon Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css">
+    
+    <script  src="menu.js" defer></script>
+   
+ 
+  </head>
+<header>
+    <figure>          
+      <img src="" alt="Logo" id="logoImg" />
+  </figure>  
+  <h1 id="title">Mon Blog</h1>
+     <button id="menuToggle"><img src="hamburger.svg" alt="Ouvrir/ Fermer le menu" /></button>
+
+</header> 
+  <?php
+  session_start();
+  ?>
+
+  <?php
+  if(isset($_SESSION['id'])) { // vérifie si un utilisateur est bien connecté, si une session existe bien.
+
+  ?>
+  <nav id="NavBar">
+          <h1 class="accessibility">Menu</h1>
+          <p class="accessibility"><a href="#contenu_principal" title="Aller au contenu principal">Passer le menu</a></p>
+                <ul id="contenu_nav">
+                     
+                    <li><a href="profil.php" title="voir mon profil">Mon profil</a></li>&nbsp;
+                    <li><a href="deconnexion.php" title="se déconnecter"> Se déconnecter </a></li>
+
+                </ul>
+                   
+  </nav>
+  <?php 
+  echo 'Bonjour ' . $_SESSION['pseudo'] 
+  ?>&nbsp;
+
 <?php
-session_start();
+} 
 ?>
 
-<?php
-if(isset($_SESSION['id'])) { // vérifie si un utilisateur est bien connecté, si une session existe bien.
-
-    ?>
-
-    <?php echo 'Bonjour ' . $_SESSION['pseudo']?>&nbsp;
-
-    <a href="profil.php">Mon profil</a>&nbsp;
-    <a href="deconnexion.php"> Se déconnecter </a>
-
-    <?php
-
-    if ($_SESSION['admin'] == 1) {
-        ?>
-        <a href="insert.php"> Ajouter un article </a>
-        <?php
-    }
-} else
+  <?php
+  else
 {
     ?>
-    <a href="inscription.php"> S'inscrire </a>
-    <a href="connexion.php"> Se connecter </a>
+    <nav id="NavBar">
+          <h1 class="accessibility">Menu</h1>
+          <p class="accessibility"><a href="#contenu_principal" title="Aller au contenu principal">Passer le menu</a></p>
+                <ul id="contenu_nav">
+                     
+                <li><a href="inscription.php" title="s'inscrire"> S'inscrire </a></li>
+                <li><a href="connexion.php" title="se connecter"> Se connecter </a></li>
 
+                </ul>
+                   
+    </nav>
+ 
 <?php
 }
 
 ?>
-
-
+ <?php
+  if ($_SESSION['admin'] == 1) {
+?>
+        <a href="insert.php"> Ajouter un article </a>
+        <?php
+    }
+?>
 <?php
 include "config.php";
 
@@ -47,7 +89,7 @@ while($donnees=$reponse->fetch())
         <em><a href="commentaires.php?id=<?php echo $donnees['id']; ?>">Lire la suite
                 ...</a></em>
     </p>
-    <?php
+<?php
 }
 $reponse->closeCursor();
 ?>
